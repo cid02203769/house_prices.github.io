@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Calculator</title>
+</head>
+<body>
+    <h1>Bedroom Rent Calculator</h1>
+    <form method="post">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        {% for i in range(1, 4) %}
+        <div>
+            <label>Bedroom {{ i }} Length (m):</label>
+            <input type="number" step="0.01" name="length{{ i }}" required>
+            <label>Width (m):</label>
+            <input type="number" step="0.01" name="width{{ i }}" required>
+        </div>
+        {% endfor %}
+        <div>
+            <label>Total Floor Area (sq m):</label>
+            <input type="number" step="0.01" name="total_floor_area" required>
+        </div>
+        <div>
+            <label>Monthly Rent (£):</label>
+            <input type="number" step="0.01" name="monthly_rent" required>
+        </div>
+        <button type="submit">Calculate Rent</button>
+    </form>
+</body>
+</html>
